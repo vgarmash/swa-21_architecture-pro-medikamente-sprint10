@@ -1,0 +1,72 @@
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" modified="2026-03-03T17:30:00.742Z" version="22.1.22" etag="tV_BXZ0Kf-SfcGbD-Nuw" type="embed">
+  <diagram name="DFD Level 1 - Учёт ТМЦ" id="dfd-level1-inventory">
+    <mxGraphModel dx="1508" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="DFD Level 1 — Учёт товарно-материальных ценностей&#xa;(As-Is)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="350" y="30" width="500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="4.1&#xa;Приём ТМЦ&#xa;от поставщика" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="270" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="4.2&#xa;Оприходование&#xa;в 1С:ТиС" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="580" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="4.3&#xa;Выдача ТМЦ&#xa;в кабинеты" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="760" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="4.4&#xa;Синхронизация&#xa;с 1С:Бух (OLE)" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="580" y="320" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="D1       Накладные&#xa;           поставщиков" style="shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;fillColor=#FFF4C3;strokeColor=#000000;fontColor=#000000" parent="1" vertex="1">
+          <mxGeometry x="270" y="280" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="D2     1С:Торговля&#xa;          и склад" style="shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;fillColor=#FFF4C3;strokeColor=#000000;fontColor=#000000" parent="1" vertex="1">
+          <mxGeometry x="760" y="280" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="D3      1С:Бухгалтерия" style="shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;fillColor=#FFF4C3;strokeColor=#000000;fontColor=#000000" parent="1" vertex="1">
+          <mxGeometry x="580" y="450" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="supplier" value="Поставщик" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="20" y="130" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="warehouse" value="Склад" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="950" y="320" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="accountant" value="Бухгалтер" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="600" y="590" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" value="ТМЦ + накладные" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="supplier" target="p1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="Документы" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="p1" target="d1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="Данные для оприходования" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="p1" target="p2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" value="Запись в 1С" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.267;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="p2" target="d2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" value="Запрос на выдачу" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;entryX=1;entryY=0.5;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" parent="1" source="warehouse" target="p3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f6" value="Списание ТМЦ" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="p3" target="d2" edge="1">
+          <mxGeometry y="60" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f7" value="Данные для синхронизации" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="p2" target="p4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f8" value="Проводки (OLE)" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="p4" target="d3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f9" value="Отчёт по ТМЦ" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="d3" target="accountant" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

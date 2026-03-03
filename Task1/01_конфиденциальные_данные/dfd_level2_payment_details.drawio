@@ -1,0 +1,100 @@
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" modified="2026-03-04T12:36:27.606Z" etag="VEzyVd9hPK1nz6Nakmf9" version="22.1.22" type="embed">
+  <diagram name="DFD Level 2 - Платежи детали" id="dfd-level2-payment-details">
+    <mxGraphModel dx="943" dy="536" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="DFD Level 2 — Детализация процесса оплаты&#xa;(As-Is)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="400" y="30" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="3.2.1&#xa;Приём денег&#xa;от пациента" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="100" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="3.2.2&#xa;Печать чека&#xa;ККМ" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="300" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="3.3.1&#xa;Запись в&#xa;Excel-журнал" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="550" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="3.4.1&#xa;Передача&#xa;в 1С (OLE)" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="800" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" value="3.4.2&#xa;Создание&#xa;проводки" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="800" y="280" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="D1     Журнал кассира&#xa;         (Excel)" style="shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;fillColor=#FFF4C3;strokeColor=#000000;fontColor=#000000" parent="1" vertex="1">
+          <mxGeometry x="550" y="260" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="D2      в1С:Бухгалтерия" style="shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;fillColor=#FFF4C3;strokeColor=#000000;fontColor=#000000" parent="1" vertex="1">
+          <mxGeometry x="800" y="430" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="D3    Фискальные&#xa;         данные ККМ" style="shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;fillColor=#FFF4C3;strokeColor=#000000;fontColor=#000000;points=[[0.25,0,0,0,0],[0.5,0,0,0,0],[0.75,0,0,0,0]];" parent="1" vertex="1">
+          <mxGeometry x="300" y="379" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="patient" value="Пациент" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="10" y="180" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cashier" value="Кассир" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="1060" y="130" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kkm" value="ККМ" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="200" y="300" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" value="Деньги/карта" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="patient" target="p1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="Сумма" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="p1" target="p2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="Сигнал печати&lt;br&gt;чека" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitDx=0;exitDy=0;" parent="1" source="kkm" target="p2" edge="1">
+          <mxGeometry x="0.0244" y="25" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f4" value="Чек" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.75;exitY=0;entryX=0.75;entryY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryDx=0;entryDy=0;" parent="1" source="d3" target="p2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" value="Чек пациенту" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.75;entryX=0.5;entryY=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" parent="1" source="p2" target="patient" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="180" />
+              <mxPoint x="270" y="280" />
+              <mxPoint x="190" y="280" />
+              <mxPoint x="190" y="285" />
+              <mxPoint x="40" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f6" value="Данные платежа" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="p2" target="p3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f7" value="Запись" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;" parent="1" source="p3" target="d1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f8" value="Данные для 1С" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="p3" target="p4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f9" value="OLE-вызов" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="p4" target="p5" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="990" y="240" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f10" value="Проводка" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="p5" target="d2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f11" value="Подтверждение" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="p4" target="cashier" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="p2" target="d3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Регистрация чека" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="3" vertex="1" connectable="0">
+          <mxGeometry x="0.4786" y="1" relative="1" as="geometry">
+            <mxPoint x="-21" y="18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
