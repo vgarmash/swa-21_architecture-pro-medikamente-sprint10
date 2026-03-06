@@ -1,0 +1,97 @@
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" modified="2026-03-04T13:43:32.550Z" version="22.1.22" etag="CiY0MOpPNjApm9LTNtAV" type="embed">
+  <diagram name="DFD Level 1 To-Be - Медкарта" id="dfd-level1-patient-card-tobe">
+    <mxGraphModel dx="943" dy="750" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="DFD Level 1 — Ведение медицинской карты пациента (To-Be)&#xa;с мерами защиты" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="300" y="30" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="2.1&#xa;🔒 TLS&#xa;🏷️ PII&#xa;Регистрация&#xa;пациента" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#C8E6C9;strokeColor=#2E7D32;fontColor=#1B5E20;align=center;" parent="1" vertex="1">
+          <mxGeometry x="240" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="2.2&#xa;🏷️ MEDICAL&#xa;🔐 AES-256&#xa;Создание&#xa;медицинской карты" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#C8E6C9;strokeColor=#2E7D32;fontColor=#1B5E20;align=center;" parent="1" vertex="1">
+          <mxGeometry x="450" y="120" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="2.3&#xa;🔐 ABAC&#xa;🏷️ MEDICAL&#xa;📝 Аудит&#xa;Внесение данных приёма" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#C8E6C9;strokeColor=#2E7D32;fontColor=#1B5E20;align=center;" parent="1" vertex="1">
+          <mxGeometry x="690" y="120" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="2.4&#xa;🔐 Vault&#xa;Сохранение&#xa;документов" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#C8E6C9;strokeColor=#2E7D32;fontColor=#1B5E20;align=center;" parent="1" vertex="1">
+          <mxGeometry x="450" y="320" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="D1&#xa;🔐 AES-256&#xa;🏷️ PII&#xa;Пациенты&#xa;(PostgreSQL)" style="shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;fillColor=#DCEDC8;strokeColor=#558B2F;fontColor=#33691E" parent="1" vertex="1">
+          <mxGeometry x="240" y="280" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="D2&#xa;🔐 AES-256&#xa;🏷️ MEDICAL&#xa;📝 Аудит&#xa;Медкарты&#xa;(PostgreSQL)" style="shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;fillColor=#DCEDC8;strokeColor=#558B2F;fontColor=#33691E;points=[[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0.25,0,0,0,0],[0.5,0,0,0,0],[0.75,0,0,0,0]];" parent="1" vertex="1">
+          <mxGeometry x="720" y="380" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="D3&#xa;🔐 Vault&#xa;🏷️ MEDICAL&#xa;Файлы&#xa;(Encrypted)" style="shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;fillColor=#DCEDC8;strokeColor=#558B2F;fontColor=#33691E;points=[[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0.25,0,0,0,0],[0.5,0,0,0,0],[0.75,0,0,0,0]];" parent="1" vertex="1">
+          <mxGeometry x="445" y="500" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="patient" value="Пациент" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry y="130" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="reception" value="Ресепшен&#xa;🔐 RBAC" style="shape=rectangle;rounded=0;fillColor=#E3F2FD;strokeColor=#1976D2;fontColor=#0D47A1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="20" y="290" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="doctor" value="Врач&#xa;🔐 ABAC" style="shape=rectangle;rounded=0;fillColor=#E3F2FD;strokeColor=#1976D2;fontColor=#0D47A1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="1010" y="130" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" value="🔒 TLS&#xa;Персональные данные&#xa;(ФИО, ДР, телефон)" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="patient" target="p1" edge="1">
+          <mxGeometry x="-0.1429" y="30" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f2" value="🔐 RBAC&#xa;Данные для регистрации" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.75;" parent="1" source="reception" target="p1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="🏷️ PII&#xa;📝 Аудит&#xa;Запись пациента" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="p1" target="d1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" value="ID пациента" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="p1" target="p2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" value="🔐 AES-256&#xa;🏷️ MEDICAL&#xa;Создание карты" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.75;exitY=1;entryX=0.5;entryY=0;exitDx=0;exitDy=0;" parent="1" source="p2" target="d2" edge="1">
+          <mxGeometry x="0.0361" y="-40" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f6" value="🔐 ABAC&#xa;🏷️ MEDICAL&#xa;Данные приёма&#xa;(жалобы, диагноз)" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitDx=0;exitDy=0;" parent="1" source="doctor" target="p3" edge="1">
+          <mxGeometry x="-0.2" y="-30" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="160" />
+              <mxPoint x="960" y="160" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f7" value="📝 Аудит&#xa;Запись в карту" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.75;exitY=1;entryX=0.75;entryY=0;exitDx=0;exitDy=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="p3" target="d2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="825" y="310" />
+              <mxPoint x="825" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f8" value="Документы для&#xa;сохранения" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="p3" target="p4" edge="1">
+          <mxGeometry x="-0.0256" y="-20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f9" value="🔐 Vault&#xa;Сохранение файлов" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="p4" target="d3" edge="1">
+          <mxGeometry y="-50" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f10" value="Ссылка на файлы" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.75;exitY=0;entryX=0.75;entryY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryDx=0;entryDy=0;" parent="1" source="d3" target="p4" edge="1">
+          <mxGeometry x="-0.0244" y="-52" relative="1" as="geometry">
+            <mxPoint x="53" y="52" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2" value="Меры:&lt;br&gt;🔒 TLS&lt;br&gt;🔐 ABAC/AES&lt;br&gt;🏷️ Теги&lt;br&gt;📝 Аудит&lt;br&gt;🎭 Маскирование" style="text;html=1;strokeColor=#2E7D32;fillColor=#E8F5E9;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="100" y="490" width="110" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

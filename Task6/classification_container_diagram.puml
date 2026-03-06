@@ -1,0 +1,104 @@
+@startuml C4_Classification_Engine_Container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title C4 Container Diagram: Data Classification Engine
+
+Person(etl_user, "ETL Engineer", "Инженер данных, управляющий пайплайнами")
+Person(data_steward, "Data Steward", "Ответственный за качество и классификацию данных")
+Person(bi_analyst, "BI Analyst", "Аналитик, работающий с данными DWH")
+
+System_Boundary(boundary, "Data Classification System") {
+    
+    Container(api, "Classification API", "Python/FastAPI", "REST API для классификации данных")
+    Container(rule_engine, "Rule Engine", "Python + YAML", "Движок правил классификации")
+    Container(ml_classifier, "ML Classifier", "Microsoft Presidio", "ML-распознавание PII и конфиденциальных данных")
+    Container(schema_analyzer, "Schema Analyzer", "Python", "Анализ изменений схемы данных")
+    Container(tag_manager, "Tag Manager", "Python", "Управление жизненным циклом тегов")
+    
+    ContainerDb(tag_registry, "Tag Registry", "PostgreSQL 15+", "Реестр тегов классификации")
+    ContainerDb(classification_rules, "Classification Rules", "YAML Files + Git", "Правила классификации (версионирование)")
+    
+    Container_Boundary(airflow, "Apache Airflow") {
+        Container(etl_orchestrator, "ETL Orchestrator", "Airflow DAGs", "Оркестрация пайплайнов ETL и классификации")
+        Container(classification_task, "Classification Task", "Airflow Operator", "Задача классификации в DAG")
+    }
+}
+
+System_Boundary(dwh, "Data Warehouse (ClickHouse)") {
+    ContainerDb(raw_storage, "Raw Storage", "ClickHouse", "Слой 1: Исходные данные (зашифровано)")
+    ContainerDb(classified_storage, "Classified Storage", "ClickHouse", "Слой 2: Данные с тегами")
+    ContainerDb(anonymized_storage, "Anonymized Storage", "ClickHouse", "Слой 3: Обезличенные данные")
+    ContainerDb(data_marts, "Data Marts", "ClickHouse", "Слой 4: Бизнес-витрины")
+}
+
+System_Boundary(bi, "BI Platform") {
+    Container(superset, "Apache Superset", "Superset", "Отчёты и дашборды для бизнеса")
+}
+
+System_Boundary(sources, "Источники данных") {
+    SystemDb(postgres_operational, "PostgreSQL", "Operational DB", "Операционная БД (PostgreSQL)")
+    SystemDb(onec_accounting, "1С:Бухгалтерия", "1C:Enterprise", "Бухгалтерский учёт")
+    SystemDb(onec_inventory, "1С:Торговля и склад", "1C:Enterprise", "Учёт ТМЦ")
+    SystemDb(files_excel, "Excel/CSV Files", "File Storage", "Файловые данные")
+}
+
+System_Boundary(infrastructure, "Infrastructure") {
+    Container(kubernetes, "Kubernetes", "K8s", "Оркестрация контейнеров, auto-scaling")
+    Container(prometheus, "Prometheus", "Prometheus", "Сбор и хранение метрик")
+    Container(grafana, "Grafana", "Grafana", "Дашборды мониторинга")
+}
+
+' === Relationships: Users ===
+Rel(etl_user, etl_orchestrator, "Управляет пайплайнами", "HTTP")
+Rel(data_steward, tag_registry, "Просматривает/редактирует теги", "SQL")
+Rel(data_steward, classification_rules, "Редактирует правила", "Git")
+Rel(bi_analyst, superset, "Просматривает отчёты", "HTTPS")
+
+' === Relationships: Airflow ===
+Rel(etl_orchestrator, classification_task, "Запускает", "Python")
+Rel(classification_task, api, "Вызывает API", "HTTPS")
+
+' === Relationships: API Layer ===
+Rel(api, rule_engine, "Применяет правила", "Python call")
+Rel(api, ml_classifier, "Запускает ML-классификацию", "Python call")
+Rel(api, schema_analyzer, "Проверяет схему", "Python call")
+Rel(api, tag_manager, "Сохраняет теги", "Python call")
+
+' === Relationships: Core Layer ===
+Rel(rule_engine, classification_rules, "Загружает правила", "File read")
+Rel(ml_classifier, tag_manager, "Передаёт результаты ML", "Python call")
+Rel(schema_analyzer, tag_manager, "Сигнализирует об изменениях", "Event")
+Rel(tag_manager, tag_registry, "Сохраняет/обновляет теги", "JDBC")
+
+' === Relationships: Sources ===
+Rel(postgres_operational, etl_orchestrator, "Извлечение данных", "JDBC")
+Rel(onec_accounting, etl_orchestrator, "Извлечение данных", "ODBC")
+Rel(onec_inventory, etl_orchestrator, "Извлечение данных", "ODBC")
+Rel(files_excel, etl_orchestrator, "Загрузка файлов", "File read")
+
+' === Relationships: DWH Layers ===
+Rel(etl_orchestrator, raw_storage, "Загрузка сырых данных", "JDBC")
+Rel(raw_storage, classified_storage, "Классифицированные данные", "JDBC")
+Rel(classified_storage, anonymized_storage, "Обезличенные данные", "JDBC")
+Rel(anonymized_storage, data_marts, "Агрегированные данные", "JDBC")
+
+' === Relationships: BI ===
+Rel(data_marts, superset, "Предоставляет данные", "SQL")
+Rel(superset, bi_analyst, "Показывает дашборды", "HTTPS")
+
+' === Relationships: Infrastructure ===
+Rel(kubernetes, api, "Оркестрация и scaling", "K8s API")
+Rel(prometheus, api, "Сбор метрик", "HTTP")
+Rel(grafana, prometheus, "Визуализация метрик", "HTTP")
+
+UpdateRelStyle(etl_user, etl_orchestrator, $offsetY="-60")
+UpdateRelStyle(data_steward, tag_registry, $offsetX="40")
+UpdateRelStyle(bi_analyst, superset, $offsetY="60")
+
+UpdateElementStyle(api, $bgColor="#4ECDC4")
+UpdateElementStyle(rule_engine, $bgColor="#FFE66D")
+UpdateElementStyle(ml_classifier, $bgColor="#FF8C42")
+UpdateElementStyle(tag_registry, $bgColor="#95E1D3")
+
+@enduml

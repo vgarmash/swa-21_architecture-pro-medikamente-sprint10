@@ -1,0 +1,126 @@
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" modified="2026-03-03T16:41:38.139Z" version="22.1.22" etag="TylBKuyw4b5VItjOgvTm" type="embed">
+  <diagram name="DFD Level 0 - Context" id="dfd-level0-context">
+    <mxGraphModel dx="943" dy="495" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sys" value="Система&#xa;«Медикаменте»" style="shape=mxgraph.c4.process;rounded=1;arcSize=10;fillColor=#D4E1F5;strokeColor=#000000;fontColor=#000000;align=center;" parent="1" vertex="1">
+          <mxGeometry x="400" y="300" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="patient" value="Пациент" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="50" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="reception" value="Ресепшен" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="200" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="doctor" value="Медицинский&#xa;специалист" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="650" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cashier" value="Кассир" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="840" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="accountant" value="Бухгалтер" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="780" y="550" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="warehouse" value="Склад" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="440" y="570" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="laboratory" value="Лаборатория&#xa;(внешняя)" style="shape=rectangle;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;align=center;" parent="1" vertex="1">
+          <mxGeometry x="200" y="550" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="flow1" value="Заявка на запись,&#xa;Персональные данные" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.25;entryX=0;entryY=0.25;jettySize=auto;orthogonalLoop=1;exitDx=0;exitDy=0;" parent="1" source="patient" target="sys" edge="1">
+          <mxGeometry x="0.1067" y="23" relative="1" as="geometry">
+            <mxPoint x="-15" y="5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow2" value="Подтверждение записи,&#xa;Счёт на оплату" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0;exitY=0.75;entryX=1;entryY=0.75;jettySize=auto;orthogonalLoop=1;entryDx=0;entryDy=0;" parent="1" source="sys" target="patient" edge="1">
+          <mxGeometry x="-0.1112" y="17" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow3" value="Данные пациента,&#xa;Запись к врачу" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;entryX=0.25;entryY=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="reception" target="sys" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow4" value="Расписание врачей,&#xa;Список пациентов" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.25;exitY=0;entryX=0.5;entryY=1;jettySize=auto;orthogonalLoop=1;" parent="1" source="sys" target="reception" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow5" value="Направление на приём,&#xa;Данные пациента" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.65;exitY=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="sys" edge="1">
+          <mxGeometry x="0.0169" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="530" y="210" />
+              <mxPoint x="685" y="210" />
+            </Array>
+            <mxPoint x="685" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow6" value="Медицинская карта,&#xa;Назначения,&#xa;Направления" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.65;exitY=1;entryX=0.85;entryY=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="doctor" target="sys" edge="1">
+          <mxGeometry x="-0.0738" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="728" y="250" />
+              <mxPoint x="570" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow7" value="Счёт на оплату" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.25;jettySize=auto;orthogonalLoop=1;exitDx=0;exitDy=0;" parent="1" source="sys" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="338" />
+              <mxPoint x="840" y="338" />
+            </Array>
+            <mxPoint x="840" y="338" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow8" value="Данные о платеже,&#xa;Чек ККМ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0;exitY=0.667;entryX=0.991;entryY=0.4;jettySize=auto;orthogonalLoop=1;entryDx=0;entryDy=0;entryPerimeter=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="cashier" target="sys" edge="1">
+          <mxGeometry x="-0.0075" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow9" value="Платёжные документы,&#xa;Отчётность" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.75;entryX=0;entryY=0.75;jettySize=auto;orthogonalLoop=1;entryDx=0;entryDy=0;" parent="1" source="sys" target="accountant" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="430" />
+              <mxPoint x="640" y="430" />
+              <mxPoint x="640" y="595" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow10" value="Проводки,&#xa;Кадровые данные" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0;exitY=0.25;entryX=0.995;entryY=0.771;jettySize=auto;orthogonalLoop=1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="accountant" target="sys" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="565" />
+              <mxPoint x="730" y="416" />
+              <mxPoint x="599" y="416" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow11" value="Данные о ТМЦ,&#xa;Накладные" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;jettySize=auto;orthogonalLoop=1;" parent="1" source="warehouse" target="sys" edge="1">
+          <mxGeometry x="-0.3333" y="20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow12" value="Запросы на ТМЦ,&#xa;Списания" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;" parent="1" edge="1">
+          <mxGeometry x="-0.1667" y="40" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="530" y="450" />
+              <mxPoint x="530" y="570" />
+            </Array>
+            <mxPoint x="530" y="450" as="sourcePoint" />
+            <mxPoint x="530" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow13" value="Результаты анализов" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;entryX=0.25;entryY=1;jettySize=auto;orthogonalLoop=1;" parent="1" source="laboratory" target="sys" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow14" value="Направления на анализы" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.25;exitY=1;entryX=0.5;entryY=0;jettySize=auto;orthogonalLoop=1;" parent="1" source="sys" target="laboratory" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="DFD Level 0 — Context Diagram&#xa;Система «Медикаменте» (As-Is)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="400" y="50" width="300" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
